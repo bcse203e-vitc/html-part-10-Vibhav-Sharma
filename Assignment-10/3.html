@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza Order</title>
+</head>
+<body>
+    <form id="pizzaForm">
+        <h2>Choose Pizza Size:</h2>
+        <input type="radio" name="size" value="Small"> Small
+        <input type="radio" name="size" value="Medium"> Medium
+        <input type="radio" name="size" value="Large"> Large
+
+        <h2>Choose Toppings:</h2>
+        <input type="checkbox" name="toppings" value="Cheese"> Cheese
+        <input type="checkbox" name="toppings" value="Pepperoni"> Pepperoni
+        <input type="checkbox" name="toppings" value="Mushrooms"> Mushrooms
+        <input type="checkbox" name="toppings" value="Olives"> Olives
+        
+        <br><br>
+        <button type="button" onclick="showOrder()">Submit</button>
+    </form>
+
+    <div id="orderSummary"></div>
+
+    <script>
+        function showOrder() {
+            const size = document.querySelector('input[name="size"]:checked').value;
+            const toppings = [];
+            const toppingElements = document.querySelectorAll('input[name="toppings"]:checked');
+            toppingElements.forEach(topping => toppings.push(topping.value));
+            
+            const summary = `You ordered a ${size} pizza with ${toppings.join(', ')} toppings.`;
+            document.getElementById('orderSummary').innerText = summary;
+        }
+    </script>
+</body>
+</html>
