@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+        .image {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            transition: z-index 0.3s;
+        }
+        #img1 { z-index: 1; }
+        #img2 { z-index: 2; }
+        #img3 { z-index: 3; }
+    </style>
+</head>
+<body>
+    <img id="img1" class="image" src="image1.jpg" onclick="bringToFront(1)">
+    <img id="img2" class="image" src="image2.jpg" onclick="bringToFront(2)">
+    <img id="img3" class="image" src="image3.jpg" onclick="bringToFront(3)">
+    
+    <script>
+        function bringToFront(imgNumber) {
+            for (let i = 1; i <= 3; i++) {
+                document.getElementById('img' + i).style.zIndex = 1;
+            }
+            document.getElementById('img' + imgNumber).style.zIndex = 10;
+        }
+    </script>
+</body>
+</html>
